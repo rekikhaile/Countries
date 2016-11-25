@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Country</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1>Edit country</h1>
+	
+
+	<div>
+	<div class="col-md-4">
+		<form th:object="${country}" th:action="@{../save}" action="#" method="post">
+		
+		  	
+			<input type="hidden" id="id" th:field="*{id}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	
+		  	<label for="countryName">Name</label>
+			<input type="text" id="countryName" th:field="*{countryName}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label for="area">Area</label>
+			<input type="text" id="area" th:field="*{area}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label for="population">Population</label>
+			<input type="text" id="population" th:field="*{population}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="capital">Capital</label>
+			<input type="text" id="capital" th:field="*{capital}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			
+			<label for="monetaryUnit">Currency</label>
+			<input type="text" id="monetaryUnit" th:field="*{monetaryUnit}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="language">Language</label>
+			<input type="text" id="language" th:field="*{language}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="contlist">Continent</label>
+			 <select id="contlist" th:field="*{continent}" class="form-control">
+      			<option th:each="continent: ${continents}" th:value="${continent.continentId}" th:text="${continent.continentName}"></option>
+   		</select>
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<input type="submit" class="btn btn-success" value="Save"></input>
+		</form>
+		</div>
+	</div>
+</body>
+</html>	
