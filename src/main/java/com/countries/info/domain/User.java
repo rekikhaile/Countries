@@ -2,9 +2,17 @@ package com.countries.info.domain;
 
 import javax.persistence.*;
 
+/*Users are used from database*/
+/*An entity represents a table in relational database
+ * An entity class is annotated with @Entity annotation
+ * by default the table name is the name of the entity class*/
 @Entity
 public class User {
-
+/* @Id annotation is used for creating id column of the table
+ * @GeneratedValue(strategy = GenerationType.IDENTITY) will enable the Entity to leverage on the AUTO_INCREMENT feature in automatically generating a 
+  sequential number as primary key when inserted into the database.
+ * @Column can be used to specify mapped column
+  */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)

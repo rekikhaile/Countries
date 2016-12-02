@@ -9,8 +9,16 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/*An entity represents a table in relational database
+ * An entity class is annotated with @Entity annotation
+ * by default the table name is the name of the entity class*/
 @Entity
 public class Country {
+	/* @Id annotation is used for creating id column of the table
+	 * @GeneratedValue(strategy = GenerationType.AUTO)generates 
+	 	automatically a unique primary key for every new entity object
+	 * 
+	  */
      @Id
      @GeneratedValue(strategy=GenerationType.AUTO)
      private Long id;	
@@ -21,11 +29,18 @@ public class Country {
 	 private String monetaryUnit;
 	 private String language;
 	 
-	 
+	 /* @ManyToOne - many-to-one relationship between Class and Continent entities
+	  * The annotation @JoinColumn indicates that this entity is the owner
+ 		of the relationship that is: the corresponding table has a column
+ 		 with a foreign key to the referenced table
+ 	  * @JsonIgnore - ignore one-to-many relationship from JSON to avoid endless loop 
+ 	  	of the entity relationship
+ 	  * Add new continent attribute with the @ManyToOne and @JoinColumn
+	  * */
 	 @ManyToOne
 	 @JsonIgnore
 	 @JoinColumn(name = "continentId")
-	 private Continent continent;
+	 private Continent continent;  
 	   
 	   
 	public Country() {

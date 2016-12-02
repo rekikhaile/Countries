@@ -13,6 +13,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 
 import com.countries.info.web.UserDetailServiceImpl;
 
+/*@EnableWebSecurity annotation enables Spring 
+ * Security web security support
+ * */
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
@@ -20,6 +23,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailServiceImpl userDetailsService;	
 	
+    /*configure(HttpSecurity) - defines which URL paths are secured
+     * and the path for login form*/
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -42,7 +47,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .logoutUrl("/logout")
         .logoutSuccessUrl("/login");
     }
-    
+    /*Change Spring Security configuration to use your UserDetailService implementation*/
+    /*Using Bcrypt hash algorithm*/
+    /*configureGlobal(AuthenticationManagerBuilder) is used to configure
+     * authentication and create in-memory users for testing when needed*/
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());

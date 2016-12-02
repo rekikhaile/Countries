@@ -10,14 +10,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.countries.info.web.CountryController;
 
-
-
 /**
- * Testing that the context is creating the controller
- * 
- * @author Rekik Haile
+ *
+ * Spring Boot first created this class after the testing 
+ * dependency is added to pom.xml
+ *  @author Rekik Haile
+ * Smoke testing
  *
  */
+
+/*@RunWith tells JUnit to run using Spring's testing support*/
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CountriesApplicationTests {
@@ -25,6 +27,9 @@ public class CountriesApplicationTests {
     @Autowired
     private CountryController controller;
     
+    /*@Test defines a method to be test method
+     * 
+     *  Testing that the context is creating the controller*/
 	@Test
 	public void contextLoads() throws Exception {
 		assertThat(controller).isNotNull();

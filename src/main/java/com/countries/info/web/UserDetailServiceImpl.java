@@ -18,6 +18,11 @@ import com.countries.info.domain.UserRepository;
 public class UserDetailServiceImpl implements UserDetailsService  {
 	private final UserRepository repository;
 
+	/*@Autowired bring the repository class into the context
+	 * and will inject an instance of the service into the
+	 * UserDetailServiceImpl class.
+	 * */
+	
 	@Autowired
 	public UserDetailServiceImpl(UserRepository userRepository) {
 		this.repository = userRepository;

@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<!--Thymeleaf template for adding country -->
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Add Country</title>
@@ -38,6 +39,7 @@
 			<input type="text" id="language" th:field="*{language}" class="form-control"/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 
+			<!-- Add continent dropdown list to country form -->
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="contlist">Continent</label>
 			 <select id="contlist" th:field="*{continent}" class="form-control">

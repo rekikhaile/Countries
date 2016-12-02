@@ -1,4 +1,7 @@
 <!DOCTYPE HTML>
+<!--Thymeleaf template for listing country -->
+<!-- Spring security - xmlns:sec - definition for sec:  attributes -->
+
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <title>Country List</title>
@@ -13,7 +16,9 @@
 	</div>
 	<div style="clear: both; display: block; height: 10px;"></div>
 
+
 	<div class="col-md-4">
+	<!-- Show logged in user -->
 	<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
 </div>
 
@@ -40,7 +45,8 @@
     		<td th:text="${country.capital}"></td>
     		<td th:text="${country.monetaryUnit}"></td>
     		<td th:text="${country.language}"></td>
-    		<td th:text="${country.continent.continentName}"></td>  	 		
+    		<td th:text="${country.continent.continentName}"></td> 
+			<!-- Only admin users can edit and delete countries -->
     		<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${country.id})}" class="btn btn-success">Edit</a><a th:href="@{/delete/{id}(id=${country.id})}" class="btn btn-danger">Delete</a></td>    	 
 
     	</tr>

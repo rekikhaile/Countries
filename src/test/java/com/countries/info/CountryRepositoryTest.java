@@ -14,6 +14,9 @@ import com.countries.info.domain.Continent;
 import com.countries.info.domain.Country;
 import com.countries.info.domain.CountryRepository;
 
+/*  @author Rekik Haile
+* Testing finding, adding and deleting functionalities
+*/
 /*@DataJpaTest annotation will configure in-memory database, JPA and Spring
 Data. It also turns on SQL logging*/
 @RunWith(SpringRunner.class)
@@ -23,6 +26,8 @@ public class CountryRepositoryTest {
 	 @Autowired
 	 private CountryRepository repository;
 	 
+	 /*@Test defines a method to be test method
+	     * */
 	 @Test
 	 public void findByCountryNameShouldReturnCountry() {
 		 List<Country> countries = repository.findByCountryName("Finland");

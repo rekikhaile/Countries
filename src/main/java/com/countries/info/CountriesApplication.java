@@ -20,15 +20,23 @@ import com.countries.info.domain.UserRepository;
  * @author Rekik Haile
  *
  */
+
+/*@SpringBootApplication annotation adds annotations such as
+ * @Configurations, @EnableAutoConfiguration, @ComponentScan
+ * @EnableWebMvc
+ * */
 @SpringBootApplication
 public class CountriesApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(CountriesApplication.class);
 	
+	/*Execution starts from the main application class main() method*/
 	public static void main(String[] args) {
 		SpringApplication.run(CountriesApplication.class, args);
 	}
 	
+	/*If you need to run some specific code when the SpringApplication
+	 * has started, implement the CommandLineRunner interface.*/
 	@Bean
 	public CommandLineRunner countryDemo(CountryRepository crepository, ContinentRepository vrepository, UserRepository urepository) {
 		return (args) -> {
@@ -47,6 +55,7 @@ public class CountriesApplication {
 			crepository.save(new Country("Australia", 7692024, 24278600, "Canberra","AUD","English",vrepository.findByContinentName("Oceania").get(0)));
 			crepository.save(new Country("Brazil", 8515767, 206440850, "Brasília","BRL","	Portuguese",vrepository.findByContinentName("South America").get(0)));
 
+			/*Create some demo users for my database with Bcrypt hash passwords*/
 			// Create users: admin/password2 user/password1
 			User user1 = new User("user", "$2a$10$X9yO8y..u/Sp5biLLxNZuuBK4.hFWdgPWrlX51ItINEzn/82fPJ2a", "USER");//password1 bcrypt
 			User user2 = new User("admin", "$2a$10$4KkPnyj.dMMbAIocGkXGcepFnJ61lDefQ7FB8Cwau9gWnRrrKKDei", "ADMIN"); //password2 bcrypt
